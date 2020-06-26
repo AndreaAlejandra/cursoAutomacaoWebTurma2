@@ -16,7 +16,7 @@ public class Media {
 	
 	@Test
 	public void validaAprovado() {
-		CalculoMedia calculoMedia = new CalculoMedia();
+		CalculoMedia calculoMedia = new CalculoMedia(5,5);
 		calculoMedia.setNota1(7);
 		calculoMedia.setNota2(7);
 		Assert.assertEquals("Aprovado", calculoMedia.getSituacao());
