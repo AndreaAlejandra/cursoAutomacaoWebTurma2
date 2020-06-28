@@ -12,7 +12,7 @@ public class LojaTeste {
 	
 	WebDriver driver;
 	public void abreNavegador() {
-		
+				
 		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 		//WebDriver driver = new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
@@ -20,11 +20,12 @@ public class LojaTeste {
 		WebDriver driver = new ChromeDriver(options);
 		
 		driver.manage().window().maximize();
-		driver.get("https://lojaexemplod.lojablindada.com/");		
+		driver.get("https://lojaexemplod.lojablindada.com/");			
 		
 	}
 	
-	public void fechaNavegador() {		
+	public void fechaNavegador() {	
+		
 		driver.quit();
 	}
 	
@@ -33,6 +34,7 @@ public class LojaTeste {
 		abreNavegador();
 		WebElement pesquisa = driver.findElement(By.id("search"));
 		pesquisa.sendKeys("fortaleza digital", Keys.ENTER);
+		fechaNavegador();
 		
 	}
 	
