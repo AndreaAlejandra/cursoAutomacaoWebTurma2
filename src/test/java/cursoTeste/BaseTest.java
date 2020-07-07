@@ -14,21 +14,15 @@ public class BaseTest {
 	@Before
 	public void abreNavegador() {
 				
-		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-		//WebDriver driver = new ChromeDriver();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--remote-debugging-port=9222");
-		WebDriver driver = new ChromeDriver(options);
-		
-		driver.manage().window().maximize();
-		driver.get("https://lojaexemplod.lojablindada.com/");			
+		//"https://lojaexemplod.lojablindada.com/"
+		cursoTeste.driver.abreNavegador("https://lojaexemplod.lojablindada.com/");		
 		
 	}
 	
 	@After
 	
 	public void fechaNavegador() {		
-		driver.quit();
+		driver.fechaNavegador();
 	}
 
 }
