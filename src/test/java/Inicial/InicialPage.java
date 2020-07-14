@@ -1,32 +1,47 @@
 package Inicial;
 
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import Map.InicialMap;
 import core.Driver;
 
 public class InicialPage {
-	
-	String elPesquisa = "Search";
-	String elTituloLivro = "//h2/a";	
-	String elPreco = "#product-price-44 > span";
-	
+
+	InicialMap inicialMap = new InicialMap();
+	String elLivros = "ul.products-grid > li";
+	String elPrecoLista = "span.price";
+	String elTituloLivrosLista = "h2 > a";	
+
 	public void setPesquisa(CharSequence... valor) {		
-		WebElement pesquisa = Driver.getDriver().findElement(By.id(elPesquisa));
-		pesquisa.sendKeys(valor);
-		
+		inicialMap.pesquisa.sendkeys(valor);
+
 	}
+
 	public String getTituloLivro() {
-		WebElement tituloLivro = Driver.getDriver().findElement(By.xpath(elTituloLivro));
-		String livro = tituloLivro.getText();
-	return livro;
+		String livro = inicialMap.tituloLivro.getText();
+		return livro;
 	}
-	
+
 	public String getPreco() {
-		WebElement preco = Driver.getDriver().findElement(By.cssSelector(elPreco));
-		return preco.getText();
+		return inicialMap.preco.getText();
 	}
-	
+
+	public String getPrecoLista() {
+		List<WebElement> livros = Driver.getDriver().findElements(By.cssSelector(elLivros));
+		for (WebElement elLivro : livros) {
+			WebElement elTituloLivro = elLivro.findElement(By.cssSelector(elTituloLivrosLista));
+			String titulo = elTituloLivro.getText();
+			if (titulo.contains("Ajasx com java")) {
+				WebElement preco = elLivro.findElement(By.cssSelector("elPrecoLista"));
+				return preco.getText();
+				
+			}
+		}
+		
+		return null;
+	}
 
 }

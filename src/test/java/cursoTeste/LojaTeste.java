@@ -46,19 +46,14 @@ public class LojaTeste extends BaseTest {
 	public void testClickLista() {
 		// ul.products-grid > li
 		inicialPage.setPesquisa("html", Keys.ENTER);
+		String preco = inicialPage.getPrecoLista();
+		assertThat("R$444,50", is(preco));
 
-		List<WebElement> elLivros = Driver.getDriver().findElements(By.cssSelector("ul.products-grid > li"));
-		for (WebElement elLivro : elLivros) {
-			WebElement elTituloLivro = elLivro.findElement(By.cssSelector("h2>a"));
-			String tituloLivro = elTituloLivro.getText();
-			if (tituloLivro.contains("Ajasx com java")) {
-				WebElement elPreco = elLivro.findElement(By.cssSelector("span.price"));
-				assertThat("R$444,90", is(elPreco.getText()));
-				break;
+		
 			}
 
-		}
+		
 
 	}
 
-}
+
