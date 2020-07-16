@@ -2,11 +2,9 @@ package Inicial;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import Map.InicialMap;
-import core.Driver;
 
 public class InicialPage {
 
@@ -30,13 +28,14 @@ public class InicialPage {
 	}
 
 	public String getPrecoLista() {
-		List<WebElement> livros = Driver.getDriver().findElements(By.cssSelector(elLivros));
+		List<WebElement> livros = inicialMap.livros.getElements();
 		for (WebElement elLivro : livros) {
-			WebElement elTituloLivro = elLivro.findElement(By.cssSelector(elTituloLivrosLista));
-			String titulo = elTituloLivro.getText();
-			if (titulo.contains("Ajasx com java")) {
-				WebElement preco = elLivro.findElement(By.cssSelector("elPrecoLista"));
-				return preco.getText();
+			inicialMap.tituloLivroLista.setWebElement(elLivro);			
+			String titulo = inicialMap.tituloLivroLista.getText();
+			if (titulo.contains("Ajax com java")) {
+				inicialMap.precoLista.setWebElement(elLivro);
+				
+				return inicialMap.precoLista.getText();
 				
 			}
 		}
