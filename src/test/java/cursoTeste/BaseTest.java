@@ -14,7 +14,7 @@ public class BaseTest {
 	
 	@Before
 	public void abreNavegador() {		
-		Driver.abreNavegador("https://lojaexemplod.lojablindada.com/");		
+			
 		
 	}
 	
